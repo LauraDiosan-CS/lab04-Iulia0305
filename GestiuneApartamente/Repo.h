@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #include "Cheltuiala.h"
 #include <iostream>
 using namespace std;
@@ -13,4 +13,10 @@ public:
 	void addCheltuiala(Cheltuiala& c);
 	Cheltuiala getCheltuiala(int poz);
 	int getSize();
+	void setSize(int nr);
+	Cheltuiala* getAll();
+	int getPoz(Cheltuiala& c);
+	void stergere(Cheltuiala& c);
+	void update(Cheltuiala c1, Cheltuiala c2);
+	void change(Cheltuiala& c);
 };

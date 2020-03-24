@@ -15,13 +15,13 @@ Cheltuiala::Cheltuiala(int ap, int s, char* t)
 	this->apartament = ap;
 	this->suma = s;
 	this->tip = new char[strlen(t) + 1];
-	strcpy_s(this->tip, sizeof this->tip, t);
+	strcpy_s(this->tip, strlen(t) + 1, t);
 }
 
 Cheltuiala::Cheltuiala(const Cheltuiala &c)
 {
 	this->tip = new char[strlen(c.tip) + 1];
-	strcpy_s(this->tip, sizeof this->tip, c.tip);
+	strcpy_s(this->tip, strlen(c.tip) + 1, c.tip);
 	this->apartament = c.apartament;
 	this->suma = c.suma;
 }
@@ -63,10 +63,15 @@ void Cheltuiala::setSuma(int s)
 
 void Cheltuiala::setTip(char* t)
 {
-	if (this->tip)
+	if (this->tip != NULL)
 		delete[] this->tip;
-	this->tip = new char[strlen(t) + 1];
-	strcpy_s(this->tip, sizeof this->tip, t);
+	if (t == NULL)
+		this->tip = NULL;
+	else
+	{
+		this->tip = new char[strlen(t) + 1];
+		strcpy_s(this->tip, strlen(t) + 1, t);
+	}
 }
 
 Cheltuiala& Cheltuiala::operator=(const Cheltuiala& c)
@@ -79,5 +84,5 @@ Cheltuiala& Cheltuiala::operator=(const Cheltuiala& c)
 
 bool Cheltuiala::operator==(const Cheltuiala& c)
 {
-	return ((this->apartament == c.apartament) && (this->suma == c.suma) && strcmp(this->tip, c.tip));
+	return ((this->apartament == c.apartament) && (this->suma == c.suma) && (strcmp(this->tip, c.tip) == 0));
 }

@@ -5,7 +5,8 @@ using namespace std;
 int main()
 {
 	TestCheltuiala();
-	TestCheltuiala();
+	TestRepo();
+	TestService();
 
 	return 0;
 }
